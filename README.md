@@ -46,4 +46,4 @@
 </body>
 </html>
 
-![Alt text](https://i.ibb.co/P1JJM3h/Screenshot-from-2024-04-12-16-42-23.png)
+![Alt text](https://i.postimg.cc/mRRRSgvx/Screenshot-from-2024-04-12-16-42-23.jpg)
