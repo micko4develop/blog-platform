@@ -37,14 +37,11 @@
   <ul>
     <li>User authentication</li>
     <li>Create, read, update, and delete blog posts</li>
-    <li>Route protection using JSON Web Tokens</li>
     <li>User password complexity validation using Joi</li>
   </ul>
 
   <h2>Contributing</h2>
   <p>Feel free to contribute to this project by submitting a pull request.</p>
 
-  <h2>License</h2>
-  <p>This project is licensed under the MIT License - see the <a href="LICENSE.md">LICENSE.md</a> file for details.</p>
 </body>
 </html>
