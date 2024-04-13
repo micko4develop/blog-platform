@@ -19,7 +19,7 @@ const Registration = ({ onRegistration }) => {
   if (response.ok) {
     // Registration successful, redirect or display a success message
 
-    fetch("http://127.0.0.1:3001/api/auth", {
+    await fetch("http://127.0.0.1:3001/api/auth", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
