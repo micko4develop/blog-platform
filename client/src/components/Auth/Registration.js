@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Registration = ({ onLogin }) => {
+const Registration = ({ onRegistration }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -30,7 +30,8 @@ const Registration = ({ onLogin }) => {
         .then(data => {
           if (data.token) {
             // Call onLogin callback to set isLoggedIn to true in App.js
-            onLogin();
+            onRegistration();
+            navigator("/")
           } else {
             alert("Invalid credentials. Please try again.");
           }
