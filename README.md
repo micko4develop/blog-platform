@@ -17,7 +17,7 @@
   <h3>Frontend</h3>
   <ol>
     <li>Navigate to the client folder</li>
-    <li>Run npm install to install the necessary dependencies.</li>
+    <li>Run npm install to install the necessary dependencies.(npm install universal-cookie axios axios-cookiejar-support tough-cookie js-cookie)</li>
     <li>Run npm start to start the frontend server.</li>
   </ol>
 
