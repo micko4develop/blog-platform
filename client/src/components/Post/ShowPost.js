@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Cookies from 'universal-cookie';
 import { Link } from "react-router-dom";
 import Loader from "../Common/Loader";
 
+
 const ShowPost = () => {
   const showPostsApi = "http://127.0.0.1:3001/api/posts";
+
+  const cookies = new Cookies();
+  const cookieValue = cookies.get('token');
+
+  //console.log(cookieValue)
 
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -25,6 +32,9 @@ const ShowPost = () => {
     try {
       const response = await fetch(showPostsApi.concat("/") + id, {
         method: "DELETE",
+        headers: {
+          'Cookie': cookieValue
+        }
       });
       if (!response.ok) {
         throw new Error("Failed to delete item");
@@ -37,9 +47,16 @@ const ShowPost = () => {
     }
   };
 
-  const getPosts = (page) => {
+ /* const getPosts = (page) => {
+
     axios
-      .get(showPostsApi + `?page=${page}&search=${searchTerm}`)
+      .get(showPostsApi + `?page=${page}&search=${searchTerm}` , {
+        //withCredentials: true,
+        mode: 'cors',
+        headers: {
+          'Cookie': cookieValue
+        }
+    })
       .then((res) => {
         setPosts(res.data);
       })
@@ -47,6 +64,26 @@ const ShowPost = () => {
         console.log(err);
       });
   };
+*/
+
+const getPosts = (page) => {
+  axios
+    .get(showPostsApi + `?page=${page}&search=${searchTerm}&token=${cookieValue}`, {
+      withCredentials: true,
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': 'token='+cookieValue, // Replace 'cookieName' and 'cookieValue' with your actual cookie data
+      },
+      body: JSON.stringify({'token': cookieValue})
+    })
+    .then((res) => {
+      setPosts(res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 
   useEffect(() => {
     getPosts(currentPage);

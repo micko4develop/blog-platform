@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import Cookies from 'universal-cookie';
 import Loader from "../Common/Loader";
 import "./Post.css";
 const EditPost = () => {
@@ -11,13 +12,22 @@ const EditPost = () => {
   const navigate = useNavigate();
   const getPostApi = "http://127.0.0.1:3001/api/posts";
 
+  const cookies = new Cookies();
+  const cookieValue = cookies.get('token');
+
   useEffect(() => {
     getPost();
   }, []);
 
   const getPost = () => {
     axios
-      .get(getPostApi.concat("/") + id)
+      .get(getPostApi.concat("/") + id , {
+        //withCredentials: true,
+        mode: 'cors',
+        headers: {
+          'Cookie': cookieValue
+        }
+    })
       .then((item) => {
         setPost(item.data);
       })

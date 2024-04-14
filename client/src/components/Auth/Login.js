@@ -1,5 +1,7 @@
  
 import React, { useState } from "react";
+import Cookies from "js-cookie";
+
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
@@ -16,6 +18,8 @@ const Login = ({ onLogin }) => {
       .then(response => response.json())
       .then(data => {
         if (data.token) {
+          Cookies.set("token", data.token, { expires: 7 }); // Set token for 7 days
+
           // Call onLogin callback to set isLoggedIn to true in App.js
           onLogin();
         } else {

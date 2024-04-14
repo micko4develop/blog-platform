@@ -8,7 +8,10 @@ var cors = require('cors')
 const app = express();
 
 // middleware
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:3000',    // Allow only requests from this origin
+    credentials: true                 // Allow cookies to be sent and received
+  }));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 

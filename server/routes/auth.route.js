@@ -21,6 +21,10 @@ router.post("/", async (req, res) => {
 		}
 
 		const token = user.generateAuthToken();
+		res.cookie("token", token, {
+			httpOnly: true,
+			sameSite: 'none'
+		});
 		res.status(200).send({ token: token, message: "Logged in successfully" });
 	} catch (error) {
 		console.error("Error: ", error);
