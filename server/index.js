@@ -20,7 +20,9 @@ app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/posts", postRoute);
 
-mongoose.connect('mongodb+srv://milovanmarkovic4development:mongodb994@cluster0.9ukmfvx.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0')
+
+
+mongoose.connect('mongodb+srv://milovanmarkovic4development:mongodb994@cluster0.svygeh4.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0')
 .then(()=>{
     console.log('Connected to database!');
     app.listen(3001, () => {
